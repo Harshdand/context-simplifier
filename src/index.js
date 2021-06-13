@@ -6,6 +6,10 @@ import React, {
 
 const contexts = {}
 
+const capitalize = (word) => {
+  return word.charAt(0).toUpperCase() + word.slice(1)
+}
+
 const createContextProvider = (name, initialValue) => {
   if (contexts[name]) {
     const { provider } = contexts[name]
@@ -33,9 +37,9 @@ const createContextProvider = (name, initialValue) => {
     const contextName = contexts[name].name
 
     return (
-      <StateContext.Provider contextName={contextName} value={state}>
+      <StateContext.Provider contextName={`${contextName} state`} value={state}>
         <ActionContext.Provider
-          contextName={`${contextName}Action`}
+          contextName={`${contextName} action`}
           value={setState}
         >
           {children}
@@ -43,6 +47,10 @@ const createContextProvider = (name, initialValue) => {
       </StateContext.Provider>
     )
   }
+
+  const fnName = `${capitalize(name)}Provider`
+
+  Object.defineProperty(Provider, 'name', { value: fnName })
 
   contexts[name].provider = Provider
   contexts[name].stateHook = useStateHook
