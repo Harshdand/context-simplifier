@@ -1,7 +1,7 @@
 import React, {
   createContext as reactCreateContext,
   useContext,
-  useState
+  useReducer
 } from 'react'
 
 const contexts = {}
@@ -10,7 +10,7 @@ const capitalize = (word) => {
   return word.charAt(0).toUpperCase() + word.slice(1)
 }
 
-const createContextProvider = (name, initialValue) => {
+const createContextProvider = (name, initialValue, reducer) => {
   if (contexts[name]) {
     const { provider } = contexts[name]
     return provider
@@ -30,8 +30,17 @@ const createContextProvider = (name, initialValue) => {
     return useContext(contexts[name].actionContext)
   }
 
+  const defaultReducer = (state, action) => {
+    if (typeof action === 'function') return action(state)
+
+    return action
+  }
+
   const Provider = ({ children }) => {
-    const [state, setState] = useState(initialValue)
+    const [state, dispatch] = useReducer(
+      reducer || defaultReducer,
+      initialValue
+    )
     const StateContext = contexts[name].stateContext
     const ActionContext = contexts[name].actionContext
     const contextName = contexts[name].name
@@ -40,7 +49,7 @@ const createContextProvider = (name, initialValue) => {
       <StateContext.Provider contextName={`${contextName} state`} value={state}>
         <ActionContext.Provider
           contextName={`${contextName} action`}
-          value={setState}
+          value={dispatch}
         >
           {children}
         </ActionContext.Provider>
