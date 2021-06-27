@@ -11,6 +11,7 @@ npm install --save context-simplifier
 ```bash
 yarn add context-simplifier
 ```
+<br/>
 
 ## API
 
@@ -24,6 +25,8 @@ Creates a context and returns the provider.
 | initialValue    | <code>any:optional</code>      | Initial Value for the context                                                                             |
 | reducerFunction | <code>function:optional</code> | Reducer function to update context value. Reducer function will receive two params `state` and `action`   |
 
+<br/>
+
 ## `getContextValue(contextName)` ⇒ `contextValue`
 
 Creates a context and returns the provider.
@@ -32,6 +35,8 @@ Creates a context and returns the provider.
 | ----------- | ---------------------------- | ------------------------------------------- |
 | contextName | <code>string:required</code> | Provide the context name to fetch its value |
 
+<br/>
+
 ## `getContextAction(contextName)` ⇒ `contextSetterFunction`
 
 Creates a context and returns the provider.
@@ -39,6 +44,8 @@ Creates a context and returns the provider.
 | Param       | Type                         | Description                                         |
 | ----------- | ---------------------------- | --------------------------------------------------- |
 | contextName | <code>string:required</code> | Provide the context name to get its setter function |
+
+<br/>
 
 ## Usage
 
