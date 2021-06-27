@@ -3,6 +3,12 @@
   "version": "0.0.1",
   "description": "Utility to simplify context api usage in react",
   "author": "Harshdand",
+  "keywords": [
+    "context simplifier",
+    "react",
+    "react context",
+    "context"
+  ],
   "license": "MIT",
   "repository": "Harshdand/context-simplifier",
   "main": "dist/index.js",
