@@ -12,9 +12,39 @@ npm install --save context-simplifier
 yarn add context-simplifier
 ```
 
+## API
+
+## `createContextProvider(contextName, initialValue, reducerFunction)` ⇒ `provider`
+
+Creates a context and returns the provider.
+
+| Param           | Type                           | Description                                                                                               |
+| --------------- | ------------------------------ | --------------------------------------------------------------------------------------------------------- |
+| contextName     | <code>string:required</code>   | Context name must be string without any spaces or special characters. **Examples**: `count, countContext` |
+| initialValue    | <code>any:optional</code>      | Initial Value for the context                                                                             |
+| reducerFunction | <code>function:optional</code> | Reducer function to update context value. Reducer function will receive two params `state` and `action`   |
+
+## `getContextValue(contextName)` ⇒ `contextValue`
+
+Creates a context and returns the provider.
+
+| Param       | Type                         | Description                                 |
+| ----------- | ---------------------------- | ------------------------------------------- |
+| contextName | <code>string:required</code> | Provide the context name to fetch its value |
+
+## `getContextAction(contextName)` ⇒ `contextSetterFunction`
+
+Creates a context and returns the provider.
+
+| Param       | Type                         | Description                                         |
+| ----------- | ---------------------------- | --------------------------------------------------- |
+| contextName | <code>string:required</code> | Provide the context name to get its setter function |
+
 ## Usage
 
-### To create a new context with provider use `createContextProvider`
+### To create new context
+
+Use `createContextProvider` to create new context. It will return the provider for the created context
 
 ```jsx
 import React, { Component } from 'react'
@@ -36,6 +66,8 @@ const App = () => {
 }
 ```
 
+<hr/>
+
 ### To use the context value use `getContextValue`
 
 ```jsx
@@ -51,7 +83,11 @@ const CountDisplay = () => {
 export default CountDisplay
 ```
 
-### To use context action to update context value use `getContextAction`
+<hr/>
+
+### To get the setter for updating the context value
+
+Use `getContextAction` to get the setter function which can be used to update the context value
 
 ```jsx
 import React from 'react'
