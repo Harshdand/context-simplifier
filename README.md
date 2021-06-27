@@ -1,4 +1,5 @@
 # context-simplifier
+### Utility to simplify context api usage in react
 
 [![NPM](https://img.shields.io/npm/v/context-simplifier.svg)](https://www.npmjs.com/package/context-simplifier) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
