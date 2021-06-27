@@ -1,6 +1,6 @@
 {
   "name": "context-simplifier",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "Utility to simplify context api usage in react",
   "author": "Harshdand",
   "keywords": [
